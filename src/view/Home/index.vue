@@ -23,7 +23,7 @@ export default {
     data() {
         return {
           imgList:[
-            {url:'https://weiliicimg6.pstatp.com/weili/l/919795258271596547.webp'},
+            {url:'https://icweiliimg9.pstatp.com/weili/l/919779495736508463.webp'},
             {url:'https://weiliicimg1.pstatp.com/weili/l/913146374019088384.webp'},
             {url:'https://icweiliimg6.pstatp.com/weili/l/919766988796461147.webp'},
             {url:'https://icweiliimg9.pstatp.com/weili/l/920127431037157415.webp'},
@@ -39,7 +39,6 @@ export default {
         //     iconClass: 'icon-success',
         //     duration: 5000
         // });
-
     },
     methods: {
 
