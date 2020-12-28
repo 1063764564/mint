@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import 'mint-ui/lib/style.min.css'
 
 Vue.config.productionTip = false
 
