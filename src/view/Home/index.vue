@@ -1,63 +1,68 @@
 <template>
+  <div>
     <div>
-        <div>
-            <h1>轮播图</h1>
-            <div class="main">
-              <mt-swipe :auto="2000">
-                <mt-swipe-item v-for="(item,index) in imgList" :key="index">
-                  <img :src="item.url" alt="">
-                </mt-swipe-item>
-            </mt-swipe>
-            </div>
-        </div>
+      <div class="main">
+        <h1>轮播图</h1>
+        <Left />
+      </div>
     </div>
+    <div class="foter">
+      <mt-navbar fixed v-model="selected" @click.native="tiaogo()">
+        <mt-tab-item id="1">首页</mt-tab-item>
+        <mt-tab-item id="2">A页</mt-tab-item>
+        <mt-tab-item id="3">B页</mt-tab-item>
+      </mt-navbar>
+    </div>
+  </div>
 </template>
 
 <script>
+import Left from '../Left/index'
 import Vue from 'vue'
-import { Toast, Swipe, SwipeItem } from 'mint-ui';
-Vue.component(Swipe.name, Swipe);
-Vue.component(SwipeItem.name, SwipeItem)
+import { Toast, Swipe, SwipeItem, Navbar, TabItem } from 'mint-ui'
+Vue.component(Navbar.name, Navbar)
+Vue.component(TabItem.name, TabItem)
 
 export default {
-    data() {
-        return {
-          imgList:[
-            {url:'https://icweiliimg9.pstatp.com/weili/l/919779495736508463.webp'},
-            {url:'https://weiliicimg1.pstatp.com/weili/l/913146374019088384.webp'},
-            {url:'https://icweiliimg6.pstatp.com/weili/l/919766988796461147.webp'},
-            {url:'https://icweiliimg9.pstatp.com/weili/l/920127431037157415.webp'},
-            {url:'https://icweiliimg9.pstatp.com/weili/l/903435504504012822.webp'},
-            {url:'https://icweiliimg9.pstatp.com/weili/l/919779495736508463.webp'},
-          ],
-        }
+  data() {
+    return {
+      selected: '1',
+    }
+  },
+  components: {
+    Left,
+  },
+  created() {
+    // Toast({
+    //     message: '我是弹出框',
+    //     position: 'center',
+    //     iconClass: 'icon-success',
+    //     duration: 5000
+    // });
+  },
+  methods: {
+    tiaogo(val) {
+      console.log('this.$router---', this.selected)
+      if (this.selected == 2) {
+        this.$router.push('center')
+      }
     },
-    created() {
-        // Toast({
-        //     message: '我是弹出框',
-        //     position: 'center',
-        //     iconClass: 'icon-success',
-        //     duration: 5000
-        // });
-    },
-    methods: {
-
-    },
+  },
 }
 </script>
 
 <style lang="less" scoped>
 @span-color: #2c3e50;
 div {
-    h1 {
-        color: @span-color;
-    }
+  h1 {
+    color: @span-color;
+  }
 }
 
-.main {
-  height: 260px;
-  img{
-    width: 100%;
+.foter {
+  position: relative;
+  .is-fixed {
+    top: 92vh;
   }
 }
 </style>
