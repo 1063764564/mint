@@ -1,7 +1,8 @@
 <template>
   <div>
+    
     <div class="main">
-      <ul ref="ulref" class="uL" :class="{'ulcls':ulStas}">
+      <ul ref="ulref" class="uL" :class="{'ulcls':ulStas}" name="ul">
         <li v-for="(item, index) in List" :key="index" v-show="item.show">
           <img :src="item.url" alt="" />
         </li>
@@ -44,10 +45,12 @@ export default {
      if(this.index==0){
         this.$refs.ulref.style.transform = `translateX(${-408*3}px)`
         this.ulStas =false
-        setTimeout(()=>{
+        this.$nextTick(()=>{
+          setTimeout(()=>{
           this.ulStas =true
           this.$refs.ulref.style.transform = `translateX(${-408*2}px)`
           this.index = 2
+        })
         })
         return
       }
@@ -65,11 +68,14 @@ export default {
       if(this.index==this.List.length){
         this.$refs.ulref.style.transform = `translateX(${0}px)`
         this.ulStas =false
-        setTimeout(()=>{
+        this.$nextTick(()=>{
+          setTimeout(()=>{
           this.ulStas =true
           this.$refs.ulref.style.transform = `translateX(${-408}px)`
           this.index = 1
         })
+          })
+        
       }else{
         this.$refs.ulref.style.transform = `translateX(${-408*this.index}px)`
         this.ulStas =true
@@ -95,13 +101,11 @@ export default {
         list-style: none;
         width: 100%;
         margin-left: 10px;
-        // display: none;
-        // display: block;
         &:first-child{
           margin-left: 0;
         }
         img{
-          width: 96vw;
+          width: 25rem;
           height: auto;
         }
       }
@@ -130,7 +134,7 @@ export default {
     }
 
     .ulcls{
-      transition: all .8s;
+      transition: all .5s;
     }
   }
 </style>
