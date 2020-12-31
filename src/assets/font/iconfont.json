@@ -1,0 +1,23 @@
+{
+  "id": "2302870",
+  "name": "mint轮播图箭头图标",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "18901549",
+      "name": "左",
+      "font_class": "zuo",
+      "unicode": "e608",
+      "unicode_decimal": 58888
+    },
+    {
+      "icon_id": "18901550",
+      "name": "右",
+      "font_class": "you",
+      "unicode": "e609",
+      "unicode_decimal": 58889
+    }
+  ]
+}

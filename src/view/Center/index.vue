@@ -6,8 +6,8 @@
           <img :src="item.url" alt="" />
         </li>
       </ul>
-      <span class="right-icon" @click="left"></span>
-      <span class="left-icon" @click="right"></span>
+      <span class="right-icon iconfont icon-zuo" @click="left"></span>
+      <span class="left-icon iconfont icon-you" @click="right"></span>
     </div>
   </div>
 </template>
@@ -31,6 +31,7 @@ export default {
           url: 'https://weiliicimg9.pstatp.com/weili/l/899976475277263036.webp',
           show:true,
         },
+        // 第一张图,为了无缝切换
         {
           url: 'https://icweiliimg1.pstatp.com/weili/l/918167774903664640.webp',
           show:true,
@@ -38,29 +39,29 @@ export default {
       ],
     }
   },
-  mounted(){
-      // console.log('UL---',this.$refs.ulref.children[1]);
-  },
   methods:{
-    // sad(){
-    //   this.$refs.ulref.children[1].style.display = 'block'
-    // },
     left(){
-      // console.log('<---左边',this.$refs.ulref.style);
+     if(this.index==0){
+        this.$refs.ulref.style.transform = `translateX(${-408*3}px)`
+        this.ulStas =false
+        setTimeout(()=>{
+          this.ulStas =true
+          this.$refs.ulref.style.transform = `translateX(${-408*2}px)`
+          this.index = 2
+        })
+        return
+      }
       this.index--
       console.log('Index---',this.index);
-      if(this.index==0){
-        console.log('第一个---',this.index);
-        this.index=0
-        this.$refs.ulref.style.transform = `translateX(${408*this.index}px)`
-        this.ulStas =true
-      }else{
-        this.$refs.ulref.style.transform = `translateX(${408*this.index}px)`
-      }
+      this.ulStas =true
+      this.$refs.ulref.style.transform = `translateX(${-408*this.index}px)`
+      // this.$refs.ulref.style.transform = `translateX(${-408*this.index}px)`
+      
     },
     right(){
       console.log('>---右边');
       this.index++
+      console.log('Index---',this.index);
       if(this.index==this.List.length){
         this.$refs.ulref.style.transform = `translateX(${0}px)`
         this.ulStas =false
@@ -74,8 +75,6 @@ export default {
         this.ulStas =true
       }
       // this.$refs.ulref.style.transform = `translateX(${-408*this.index}px)`
-      console.log('Index---',this.index);
-      
     },
   },
 }
@@ -115,8 +114,8 @@ export default {
       top: 118px;
       width: 47px;
       height: 51px;
-      background: url('../../assets/0032017383494470_b.jpg') no-repeat;
-      background-position: -140px -140px;
+      font-size: 60px;
+      font-weight: bold;
       z-index: 10;
     }
     .left-icon{
@@ -125,8 +124,8 @@ export default {
       top: 118px;
       width: 47px;
       height: 51px;
-      background: url('../../assets/0032017383494470_b.jpg') no-repeat;
-      background-position: -140px -275px;
+      font-size: 60px;
+      font-weight: bold;
       z-index: 10;
     }
 
